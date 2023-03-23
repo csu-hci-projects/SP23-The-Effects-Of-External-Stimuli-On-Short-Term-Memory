@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour
   public GameObject startButton;
 
   public void Awake(){
-    colors.Add(new List<Color32> {new Color32(255, 100, 100, 255), new Color32(255, 0, 0 , 255)}); // red
-    colors.Add(new List<Color32> {new Color32(255, 187, 109, 255), new Color32(255, 136, 0, 255)}); //yellow
-    colors.Add(new List<Color32> {new Color32(162, 255, 124, 255), new Color32(72, 248, 0, 255)}); //green
-    colors.Add(new List<Color32> {new Color32(57, 111, 255, 255), new Color32(0, 70, 255, 255)}); // blue
+    colors.Add(new List<Color32> {new Color32(255, 0, 0, 150), new Color32(255, 0, 0, 50)}); // red
+    colors.Add(new List<Color32> {new Color32(255, 187, 109, 255), new Color32(255, 187, 109, 50)}); //yellow
+    colors.Add(new List<Color32> {new Color32(162, 255, 124, 255), new Color32(162, 255, 124, 50)}); //green
+    colors.Add(new List<Color32> {new Color32(57, 111, 255, 255), new Color32(57, 111, 255, 50)}); // blue
 
     for(int i = 0; i < 4; i++){
       clickableButtons[i].GetComponent<Image>().color = colors[i][0];
@@ -67,7 +67,8 @@ public class GameManager : MonoBehaviour
     // audioSource.PlayOneShot(soundsList[buttonID]);
     yield return new WaitForSeconds(0.5f);//time button is highlighted
     clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
-  }
+    yield return new WaitForSeconds(0.5f);//time button is highlighted
+    }
 
   public IEnumerator nextRound(){
     sequence.Clear();
