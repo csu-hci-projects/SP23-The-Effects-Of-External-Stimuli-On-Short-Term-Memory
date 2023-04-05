@@ -19,8 +19,11 @@ public class GameManager : MonoBehaviour
   public CanvasGroup buttons;
 
   public GameObject startButton;
+  public GameObject nextRoundButton;
 
   public void Awake(){
+    nextRoundButton.SetActive(false);
+
     colors.Add(new List<Color32> {new Color32(255, 100, 100, 255), new Color32(255, 0, 0 , 255)}); // red
     colors.Add(new List<Color32> {new Color32(255, 187, 109, 255), new Color32(255, 136, 0, 255)}); //yellow
     colors.Add(new List<Color32> {new Color32(162, 255, 124, 255), new Color32(72, 248, 0, 255)}); //green
@@ -54,12 +57,19 @@ public class GameManager : MonoBehaviour
     startButton.SetActive(false);
   }
 
+  public void nextRoundButtonClick(){
+    StartCoroutine(nextRound());
+    nextRoundButton.SetActive(false);
+  }
+
   public IEnumerator lostRound(){
     sequence.Clear();
     tasks.Clear();
     yield return new WaitForSeconds(2f);
 
-    startButton.SetActive(true);
+    nextRoundButton.SetActive(true);
+
+    // startButton.SetActive(true);
   }
 
   public IEnumerator highlightButton(int buttonID){
