@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
     if(sequence.Count == tasks.Count){
+        ScoreManager.instance.addPoint();
       StartCoroutine(nextRound());
     }
     else{
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
   public void nextRoundButtonClick(){
     StartCoroutine(nextRound());
     nextRoundButton.SetActive(false);
+    ScoreManager.instance.clearPoints();
   }
 
   public IEnumerator lostRound(){
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
     // audioSource.PlayOneShot(soundsList[buttonID]);
     yield return new WaitForSeconds(0.5f);//time button is highlighted
     clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
+    yield return new WaitForSeconds(0.5f);//time button is highlighted
   }
 
   public IEnumerator nextRound(){
