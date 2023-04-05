@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(nextRound());
         startButton.SetActive(false);
+
     }
 
   public void nextRoundButtonClick(){
@@ -81,13 +82,15 @@ public class GameManager : MonoBehaviour
     // startButton.SetActive(true);
   }
 
-    public IEnumerator highlightButton(int buttonID)
-    {
-        clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][1];
-        // audioSource.PlayOneShot(soundsList[buttonID]);
-        yield return new WaitForSeconds(0.5f);//time button is highlighted
-        clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
-    }
+
+  public IEnumerator highlightButton(int buttonID){
+    clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][1];
+    // audioSource.PlayOneShot(soundsList[buttonID]);
+    yield return new WaitForSeconds(0.5f);//time button is highlighted
+    clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
+    yield return new WaitForSeconds(0.5f);//time button is highlighted
+  }
+
 
     public IEnumerator nextRound()
     {
