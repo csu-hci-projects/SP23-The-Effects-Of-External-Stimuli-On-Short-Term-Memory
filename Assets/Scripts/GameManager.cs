@@ -59,13 +59,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    if(sequence.Count == tasks.Count){
-        ScoreManager.instance.addPoint();
-      StartCoroutine(nextRound());
-    }
-    else{
-      return;
-
     public void StartGame()
     {
         StartCoroutine(nextRound());
