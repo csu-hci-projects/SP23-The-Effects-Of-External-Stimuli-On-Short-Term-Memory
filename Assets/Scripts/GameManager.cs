@@ -5,10 +5,24 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //Key: 0 = nothing, 1 = sound, 2 = buzz, 3 = sound & buzz
+    private static int[] order1 = {0, 1, 2, 3};
+    private static int[] order2 = {1, 2, 3, 0};
+    private static int[] order3 = {2, 3, 0, 1};
+    private static int[] order4 = {3, 0, 1, 2};
+
+    private int totalRoundCounter = 0;
+    private int roundCounter = 0;
+
+    //Here is where you change which order the participant will be using
+    private int[] roundSettings = order1;
+    private int roundNumber = 0;
+
     private List<int> tasks = new List<int>();
     private List<int> sequence = new List<int>();
 
-    private bool soundActive = true;
+    private bool soundActive;
+    private bool buzzActive;
 
     public List<AudioClip> sounds = new List<AudioClip>();
     public List<List<Color32>> colors = new List<List<Color32>>();
@@ -73,9 +87,40 @@ public class GameManager : MonoBehaviour
     ScoreManager.instance.clearPoints();
   }
 
+  public void roundNumberCheck(int roundNumber){
+    switch(roundNumber){
+        case 0:
+            soundActive = false;
+            buzzActive = false;
+            break;
+        case 1:
+            soundActive = true;
+            buzzActive = false;
+            break;
+        case 2:
+            soundActive = false;
+            buzzActive = true;
+            break;
+        case 3:
+            soundActive = true;
+            buzzActive = true;
+            break;
+
+    }
+  }
+
   public IEnumerator lostRound(){
     sequence.Clear();
     tasks.Clear();
+
+    roundCounter++;
+    totalRoundCounter++;
+
+    if(roundCounter == 3){
+        roundCounter = 0;
+        roundNumber = roundSettings[totalRoundCounter / 3];
+    }
+
     yield return new WaitForSeconds(2f);
 
     nextRoundButton.SetActive(true);
@@ -89,6 +134,9 @@ public class GameManager : MonoBehaviour
     if(soundActive){
         audioSource.PlayOneShot(sounds[buttonID]);
     }
+    if(buzzActive){
+
+    }
     yield return new WaitForSeconds(0.5f);//time button is highlighted
     clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
     yield return new WaitForSeconds(0.5f);//time button is highlighted
@@ -98,6 +146,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator nextRound()
     {
         sequence.Clear();
+        roundNumberCheck(roundNumber);
         buttons.interactable = false;
 
         yield return new WaitForSeconds(1f);
