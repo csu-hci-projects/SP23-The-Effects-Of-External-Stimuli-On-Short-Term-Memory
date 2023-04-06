@@ -79,7 +79,8 @@ public class GameManager : MonoBehaviour
     yield return new WaitForSeconds(2f);
 
     nextRoundButton.SetActive(true);
-
+ //increment round counter, if it gets to 3, then move foreard in the variablearr. in which case youll
+ //need to move onto the next settings
     // startButton.SetActive(true);
   }
 
