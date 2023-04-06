@@ -8,13 +8,12 @@ public class GameManager : MonoBehaviour
     private List<int> tasks = new List<int>();
     private List<int> sequence = new List<int>();
 
+    public List<AudioClip> sounds = new List<AudioClip>();
     public List<List<Color32>> colors = new List<List<Color32>>();
 
     public List<Button> clickableButtons;
 
-    // public AudioClip loseSound;
-    // public AudioSource audioSource;
-    // public List<AudioClip> sounds = new List<AudioClip>();
+    public AudioSource audioSource;
 
     public CanvasGroup buttons;
 
@@ -85,7 +84,7 @@ public class GameManager : MonoBehaviour
 
   public IEnumerator highlightButton(int buttonID){
     clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][1];
-    // audioSource.PlayOneShot(soundsList[buttonID]);
+    audioSource.PlayOneShot(sounds[buttonID]);
     yield return new WaitForSeconds(0.5f);//time button is highlighted
     clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
     yield return new WaitForSeconds(0.5f);//time button is highlighted
