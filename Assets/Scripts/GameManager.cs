@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     private int roundCounter = 0;
 
     //Here is where you change which order the participant will be using
-    private int[] roundSettings = order1;
-    private int roundNumber = 0;
+    private int[] roundSettings;
+    private int roundNumber;
 
     private List<int> tasks = new List<int>();
     private List<int> sequence = new List<int>();
@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
   public void Awake(){
+    roundSettings = order3;
+    roundNumber = roundSettings[0];
     nextRoundButton.SetActive(false);
         instance = this;
     colors.Add(new List<Color32> {new Color32(255, 100, 100, 255), new Color32(255, 0, 0 , 255)}); // red
@@ -138,7 +140,7 @@ public class GameManager : MonoBehaviour
         audioSource.PlayOneShot(sounds[buttonID]);
     }
     if(buzzActive){
-
+        RumbleManager.instance.RumblePulse(.25f, .75f, 1f);
     }
     yield return new WaitForSeconds(0.5f);//time button is highlighted
     clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
