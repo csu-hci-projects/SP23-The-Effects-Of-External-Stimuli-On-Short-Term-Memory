@@ -6,11 +6,16 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
+    public PlayerController instance;
+
+    
+
     public void OnYellow(InputValue value)
     {
         //if (Input.GetButtonDown("Yellow"))
         //{
         Debug.Log("yellow pressed");
+        RumbleManager.instance.RumblePulse(.25f, .75f, .75f);
         GameManager.instance.addToSequence(1);
         //}
     }
@@ -31,5 +36,10 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("blue pressed");
         GameManager.instance.addToSequence(3);
+    }
+
+    public void OnRumbleAction(InputValue value){
+        Debug.Log("RUMBLE TIME");
+        RumbleManager.instance.RumblePulse(.25f, .75f, .75f);
     }
 }

@@ -24,12 +24,14 @@ public class RumbleManager : MonoBehaviour
 
     public void RumblePulse(float lowFrequency, float highFrequency, float duration)
     {
-        Debug.Log("rumbling now");
+        // Debug.Log("rumbling now");
         pad = Gamepad.current;
 
         if (pad != null)
         {
-            Debug.Log("pad not null");
+            
+            Debug.Log(lowFrequency);
+            Debug.Log(highFrequency);
             pad.SetMotorSpeeds(lowFrequency, highFrequency);
             stopRumbleAfterCoroutine = StartCoroutine(StopRumble(duration, pad));
 
@@ -38,7 +40,7 @@ public class RumbleManager : MonoBehaviour
 
     private IEnumerator StopRumble(float duration, Gamepad pad)
     {
-        Debug.Log("stop rumble");
+        // Debug.Log("stop rumble");
         float elapsedTime = 0f;
         while (elapsedTime < duration)
         {

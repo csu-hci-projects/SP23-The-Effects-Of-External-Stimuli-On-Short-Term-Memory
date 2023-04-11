@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public bool ShouldRumble = false;
+
     public void Awake()
     {
         nextRoundButton.SetActive(false);
@@ -96,7 +98,6 @@ public class GameManager : MonoBehaviour
 
     public void roundNumberCheck(int roundNumber)
     {
-        Debug.Log("all true: " + roundNumber);
         switch (roundNumber)
         {
             case 0:
@@ -151,8 +152,8 @@ public class GameManager : MonoBehaviour
         }
         if (buzzActive)
         {
-            Debug.Log("rumble active?");
-            RumbleManager.instance.RumblePulse(0.25f, 1f, 0.025f);
+            ShouldRumble = true;
+            RumbleManager.instance.RumblePulse(0.25f, .75f, 0.025f);
         }
         yield return new WaitForSeconds(0.5f);//time button is highlighted
         clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
