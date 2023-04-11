@@ -7,17 +7,17 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     //Key: 0 = nothing, 1 = sound, 2 = buzz, 3 = sound & buzz
-    private static int[] order1 = {0, 1, 2, 3};
-    private static int[] order2 = {1, 2, 3, 0};
-    private static int[] order3 = {2, 3, 0, 1};
-    private static int[] order4 = {3, 0, 1, 2};
+    private static int[] order1 = { 0, 1, 2, 3 };
+    private static int[] order2 = { 1, 2, 3, 0 };
+    private static int[] order3 = { 2, 3, 0, 1 };
+    private static int[] order4 = { 3, 0, 1, 2 };
 
     private int totalRoundCounter = 0;
     private int roundCounter = 0;
 
     //Here is where you change which order the participant will be using
-    private int[] roundSettings = order1;
-    private int roundNumber = 0;
+    private int[] roundSettings;
+    private int roundNumber;
 
     private List<int> tasks = new List<int>();
     private List<int> sequence = new List<int>();
@@ -34,18 +34,21 @@ public class GameManager : MonoBehaviour
 
     public CanvasGroup buttons;
 
-  public GameObject startButton;
-  public GameObject nextRoundButton;
+    public GameObject startButton;
+    public GameObject nextRoundButton;
 
     public static GameManager instance;
 
-  public void Awake(){
-    nextRoundButton.SetActive(false);
+    public void Awake()
+    {
+        nextRoundButton.SetActive(false);
         instance = this;
-    colors.Add(new List<Color32> {new Color32(255, 100, 100, 255), new Color32(255, 0, 0 , 255)}); // red
-    colors.Add(new List<Color32> {new Color32(255, 187, 109, 255), new Color32(255, 136, 0, 255)}); //yellow
-    colors.Add(new List<Color32> {new Color32(162, 255, 124, 255), new Color32(72, 248, 0, 255)}); //green
-    colors.Add(new List<Color32> {new Color32(57, 111, 255, 255), new Color32(0, 70, 255, 255)}); // blue
+        roundSettings = order3;
+        roundNumber = roundSettings[0];
+        colors.Add(new List<Color32> { new Color32(255, 100, 100, 255), new Color32(255, 0, 0, 255) }); // red
+        colors.Add(new List<Color32> { new Color32(255, 187, 109, 255), new Color32(255, 136, 0, 255) }); //yellow
+        colors.Add(new List<Color32> { new Color32(162, 255, 124, 255), new Color32(72, 248, 0, 255) }); //green
+        colors.Add(new List<Color32> { new Color32(57, 111, 255, 255), new Color32(0, 70, 255, 255) }); // blue
 
         for (int i = 0; i < 4; i++)
         {
@@ -84,66 +87,74 @@ public class GameManager : MonoBehaviour
 
     }
 
-  public void nextRoundButtonClick(){
-    StartCoroutine(nextRound());
-    nextRoundButton.SetActive(false);
-    ScoreManager.instance.clearPoints();
-  }
-
-  public void roundNumberCheck(int roundNumber){
-    switch(roundNumber){
-        case 0:
-            soundActive = false;
-            buzzActive = false;
-            break;
-        case 1:
-            soundActive = true;
-            buzzActive = false;
-            break;
-        case 2:
-            soundActive = false;
-            buzzActive = true;
-            break;
-        case 3:
-            soundActive = true;
-            buzzActive = true;
-            break;
-
-    }
-  }
-
-  public IEnumerator lostRound(){
-    sequence.Clear();
-    tasks.Clear();
-
-    roundCounter++;
-    totalRoundCounter++;
-
-    if(roundCounter == 3){
-        roundCounter = 0;
-        roundNumber = roundSettings[totalRoundCounter / 3];
+    public void nextRoundButtonClick()
+    {
+        StartCoroutine(nextRound());
+        nextRoundButton.SetActive(false);
+        ScoreManager.instance.clearPoints();
     }
 
-    yield return new WaitForSeconds(2f);
+    public void roundNumberCheck(int roundNumber)
+    {
+        switch (roundNumber)
+        {
+            case 0:
+                soundActive = false;
+                buzzActive = false;
+                break;
+            case 1:
+                soundActive = true;
+                buzzActive = false;
+                break;
+            case 2:
+                soundActive = false;
+                buzzActive = true;
+                break;
+            case 3:
+                soundActive = true;
+                buzzActive = true;
+                break;
 
-    nextRoundButton.SetActive(true);
-
-    // startButton.SetActive(true);
-  }
-
-
-  public IEnumerator highlightButton(int buttonID){
-    clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][1];
-    if(soundActive){
-        audioSource.PlayOneShot(sounds[buttonID]);
+        }
     }
-    if(buzzActive){
 
+    public IEnumerator lostRound()
+    {
+        sequence.Clear();
+        tasks.Clear();
+
+        roundCounter++;
+        totalRoundCounter++;
+
+        if (roundCounter == 3)
+        {
+            roundCounter = 0;
+            roundNumber = roundSettings[totalRoundCounter / 3];
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        nextRoundButton.SetActive(true);
+
+        // startButton.SetActive(true);
     }
-    yield return new WaitForSeconds(0.5f);//time button is highlighted
-    clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
-    yield return new WaitForSeconds(0.5f);//time button is highlighted
-  }
+
+
+    public IEnumerator highlightButton(int buttonID)
+    {
+        clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][1];
+        if (soundActive)
+        {
+            audioSource.PlayOneShot(sounds[buttonID]);
+        }
+        if (buzzActive)
+        {
+            RumbleManager.instance.RumblePulse(0.25f, 1f, 0.25f);
+        }
+        yield return new WaitForSeconds(0.5f);//time button is highlighted
+        clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
+        yield return new WaitForSeconds(0.5f);//time button is highlighted
+    }
 
 
     public IEnumerator nextRound()
