@@ -96,7 +96,6 @@ public class GameManager : MonoBehaviour
 
     public void roundNumberCheck(int roundNumber)
     {
-        Debug.Log("all true: " + roundNumber);
         switch (roundNumber)
         {
             case 0:
@@ -112,7 +111,6 @@ public class GameManager : MonoBehaviour
                 buzzActive = true;
                 break;
             case 3:
-                Debug.Log("all true");
                 soundActive = true;
                 buzzActive = true;
                 break;
@@ -151,8 +149,7 @@ public class GameManager : MonoBehaviour
         }
         if (buzzActive)
         {
-            Debug.Log("rumble active?");
-            RumbleManager.instance.RumblePulse(0.25f, 1f, 0.025f);
+            RumbleManager.instance.RumblePulse(0.25f, 1f, 0.25f);
         }
         yield return new WaitForSeconds(0.5f);//time button is highlighted
         clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
@@ -164,7 +161,6 @@ public class GameManager : MonoBehaviour
     {
         sequence.Clear();
         roundNumberCheck(roundNumber);
-        Debug.Log("round numbers: " + roundNumber);
         buttons.interactable = false;
 
         yield return new WaitForSeconds(1f);
