@@ -18,7 +18,7 @@ public class RumbleManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this;
+            instance = this;       
         }
     }
 
