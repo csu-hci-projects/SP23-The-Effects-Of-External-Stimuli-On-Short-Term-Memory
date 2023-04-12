@@ -11,8 +11,6 @@ public class RumbleManager : MonoBehaviour
 
     private Coroutine stopRumbleAfterCoroutine;
 
-
-
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,8 +20,35 @@ public class RumbleManager : MonoBehaviour
         }
     }
 
+    public void RumbleColor(int buttonID){
+        switch (buttonID){
+            case 0:
+                RumblePulse(.25f, 1f, .25f);
+                break;
+            case 1:
+                RumblePulse(.25f, .5f, .15f);
+                break;
+            case 2:
+                RumblePulse(.25f, 1f, .1f);
+                StartCoroutine(waitSec());
+                RumblePulse(.25f, 1f, .1f);
+                break;
+            case 3:
+                RumblePulse(.25f, 1f, .2f);
+                StartCoroutine(waitSec());
+                RumblePulse(.25f, 1f, .2f);
+                break;
+
+        }
+    }
+
+    private IEnumerator waitSec(){
+        yield return new WaitForSeconds(0.1f);
+    }
+
     public void RumblePulse(float lowFrequency, float highFrequency, float duration)
     {
+        Debug.Log("Rumbling");
         pad = Gamepad.current;
 
         if (pad != null)
