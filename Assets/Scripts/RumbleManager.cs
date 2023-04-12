@@ -23,27 +23,31 @@ public class RumbleManager : MonoBehaviour
     public void RumbleColor(int buttonID){
         switch (buttonID){
             case 0:
-                RumblePulse(.25f, 1f, .25f);
+                RumblePulse(.25f, 1f, .5f);
                 break;
             case 1:
-                RumblePulse(.25f, .5f, .15f);
+                RumblePulse(.5f, .5f, .25f);
                 break;
             case 2:
-                RumblePulse(.25f, 1f, .1f);
-                StartCoroutine(waitSec());
-                RumblePulse(.25f, 1f, .1f);
+                RumblePulse(.25f, .25f, .5f);
+                // StartCoroutine(waitSec());
+                // Debug.Log("after wait");
+                // RumblePulse(.25f, 1f, .5f);
                 break;
             case 3:
-                RumblePulse(.25f, 1f, .2f);
-                StartCoroutine(waitSec());
-                RumblePulse(.25f, 1f, .2f);
+                RumblePulse(1f, 1f, .25f);
+                // StartCoroutine(waitSec());
+                // Debug.Log("after wait");
+                // RumblePulse(1f, 1f, .25f);
                 break;
 
         }
     }
 
     private IEnumerator waitSec(){
-        yield return new WaitForSeconds(0.1f);
+        Debug.Log("prewait");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("postwait");
     }
 
     public void RumblePulse(float lowFrequency, float highFrequency, float duration)
