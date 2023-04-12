@@ -30,29 +30,20 @@ public class RumbleManager : MonoBehaviour
                 break;
             case 2:
                 RumblePulse(.25f, .25f, .5f);
-                // StartCoroutine(waitSec());
-                // Debug.Log("after wait");
-                // RumblePulse(.25f, 1f, .5f);
                 break;
             case 3:
                 RumblePulse(1f, 1f, .25f);
-                // StartCoroutine(waitSec());
-                // Debug.Log("after wait");
-                // RumblePulse(1f, 1f, .25f);
                 break;
 
         }
     }
 
     private IEnumerator waitSec(){
-        Debug.Log("prewait");
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("postwait");
     }
 
     public void RumblePulse(float lowFrequency, float highFrequency, float duration)
     {
-        Debug.Log("Rumbling");
         pad = Gamepad.current;
 
         if (pad != null)
