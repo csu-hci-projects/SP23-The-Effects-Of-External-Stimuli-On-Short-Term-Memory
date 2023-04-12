@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
         }
         if (buzzActive)
         {
-            RumbleManager.instance.RumblePulse(0.25f, 1f, 0.25f);
+            RumbleManager.instance.RumbleColor(buttonID);
         }
         yield return new WaitForSeconds(0.5f);//time button is highlighted
         clickableButtons[buttonID].GetComponent<Image>().color = colors[buttonID][0];
