@@ -6,7 +6,7 @@ using System.IO;
 public class DataToFile : MonoBehaviour
 {
     public static DataToFile instance;
-    private string path;
+    public string path;
 
     public void Awake(){
         if(instance == null){
