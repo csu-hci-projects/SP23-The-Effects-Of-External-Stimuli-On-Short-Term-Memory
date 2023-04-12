@@ -16,7 +16,7 @@ public class DataToFile : MonoBehaviour
 
     public void CreateFile(string roundSettings){
         string dateTime = System.DateTime.Now + " ";
-        string newDateTime = (dateTime.Replace(" ", "_")).Replace("/", "-");
+        string newDateTime = ((dateTime.Replace(" ", "_")).Replace("/", "-")).Replace(":", "*");
 
         string filename = "/PlayerData/" + newDateTime + "_" + roundSettings + ".txt";
         
@@ -28,5 +28,10 @@ public class DataToFile : MonoBehaviour
             File.WriteAllText(path, "Participant Mode" + roundSettings + "\n");
         }
 
+    }
+
+    public void AppendToFile(int totalRounds, int roundSettings){
+        int score = ScoreManager.instance.score;
+        Debug.Log(score);
     }
 }

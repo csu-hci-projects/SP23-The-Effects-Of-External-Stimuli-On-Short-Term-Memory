@@ -136,6 +136,8 @@ public class GameManager : MonoBehaviour
             roundNumber = roundSettings[totalRoundCounter / 3];
         }
 
+        DataToFile.instance.AppendToFile(totalRoundCounter, roundSettings[totalRoundCounter/3]);
+
         yield return new WaitForSeconds(2f);
 
         nextRoundButton.SetActive(true);
