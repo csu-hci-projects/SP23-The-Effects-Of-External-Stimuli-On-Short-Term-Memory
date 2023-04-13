@@ -36,12 +36,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject startButton;
     public GameObject nextRoundButton;
+    public GameObject nextModeButton;
+
 
     public static GameManager instance;
 
     public void Awake()
     {
         nextRoundButton.SetActive(false);
+        nextModeButton.SetActive(false);
 
         instance = this;
         
@@ -97,6 +100,13 @@ public class GameManager : MonoBehaviour
         ScoreManager.instance.clearPoints();
     }
 
+    public void nextModeButtonClick()
+    {
+        StartCoroutine(nextRound());
+        nextModeButton.SetActive(false);
+        ScoreManager.instance.clearPoints();
+    }
+
     public void roundNumberCheck(int roundNumber)
     {
         switch (roundNumber)
@@ -134,14 +144,14 @@ public class GameManager : MonoBehaviour
         if (roundCounter == 3)
         {
             roundCounter = 0;
+            yield return new WaitForSeconds(2f);
+            nextModeButton.SetActive(true);
             roundNumber = roundSettings[totalRoundCounter / 3];
         }
-
-        yield return new WaitForSeconds(2f);
-
-        nextRoundButton.SetActive(true);
-
-        // startButton.SetActive(true);
+        else{
+            yield return new WaitForSeconds(2f);
+            nextRoundButton.SetActive(true);
+        }        
     }
 
 
