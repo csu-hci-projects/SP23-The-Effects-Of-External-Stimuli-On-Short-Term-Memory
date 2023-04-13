@@ -26,7 +26,7 @@ Contributions:
 
 (ADD HERE)
 
-Gavin ~ Worked on adding sound complexity to our game with Annie. Addition found more related works and made crucial edits to general research paper.
+Gavin ~ Worked on adding sound complexity to our game with Annie and assited with game round functionality. Additionaly, made crucial edits to the general research paper and rewrote our groups introduction. Other than that I was around to help with any issues and found related works articles to meet the checkpoint 2 requirement.
 
 Lindsey ~ Converted the original document into overleaf, fixing any and all issues and creating bibliography. Wrote the section "Vibration in gaming" which introduced 4 more peer review papers into our paper. Edited the whole paper with help from a non-CS student. Added the between mode button to separate when the prototype changes from mode to mode. Also helped figure out the vibration issues and helped debug code for different frequencies of vibration and debugged for writing to a file. Annie and I also created the video together. 
 
