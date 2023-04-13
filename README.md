@@ -18,3 +18,18 @@ Annie  ~ Worked on creating the initial game with Gavin, and uploaded the base c
 Logan ~ Created the initial github upload with the base project code for Unity, configured it to work properly with correct files. Tried to modify the colors and timing of the buttons in the game.
 
 We will all be working toward performing the experiment. To do this, we need to finish implementing the game, and some ways to measure statistics from the game. Each person will be writing several more sections of the paper, and contributing to the paper overall. We'll continue meeting as we have been, most likely adding more meeting times to work as a team. Each person will be implementing a feature into the game. Logan will implement adding xbox controller support w/ vibrations, and sound cues.
+
+## Checkpoint 2, Effects of External Stimuli on Short Term Memory
+Link: 
+
+Contributions:
+
+(ADD HERE)
+
+Gavin ~ Worked on adding sound complexity to our game with Annie. Addition found more related works and made crucial edits to general research paper.
+
+Lindsey ~ 
+
+Annie  ~
+
+Logan ~ 
