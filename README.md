@@ -20,9 +20,10 @@ Logan ~ Created the initial github upload with the base project code for Unity, 
 We will all be working toward performing the experiment. To do this, we need to finish implementing the game, and some ways to measure statistics from the game. Each person will be writing several more sections of the paper, and contributing to the paper overall. We'll continue meeting as we have been, most likely adding more meeting times to work as a team. Each person will be implementing a feature into the game. Logan will implement adding xbox controller support w/ vibrations, and sound cues.
 
 ## Checkpoint 2, Effects of External Stimuli on Short Term Memory
-Link: https://youtu.be/4ZQQSftcTs0
 
+Prototype YouTube Link: https://youtu.be/4ZQQSftcTs0
 
+Overleaf link: https://www.overleaf.com/read/pnncvnnktgky
 
 Contributions:
 
