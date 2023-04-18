@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         
-        roundSettings = order1;
+        roundSettings = order4;
         roundNumber = roundSettings[0];
 
         colors.Add(new List<Color32> { new Color32(255, 100, 100, 255), new Color32(255, 0, 0, 255) }); // red
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        DataToFile.instance.CreateFile("order1");
+        DataToFile.instance.CreateFile("order4");
         StartCoroutine(nextRound());
         startButton.SetActive(false);
     }
