@@ -1,0 +1,15 @@
+Round Settings: order2
+
+Round Number, Round Settings, Round Score
+0,1,8
+1,1,1
+2,1,7
+3,2,6
+4,2,6
+5,2,4
+6,3,4
+7,3,10
+8,3,4
+9,0,7
+10,0,5
+11,0,5
