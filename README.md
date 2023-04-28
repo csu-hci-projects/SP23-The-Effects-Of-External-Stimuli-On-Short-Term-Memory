@@ -41,3 +41,9 @@ Logan ~ Spent the majority of his time working towards added functionality in th
 Overall regarding contributions, it seems that everyone has done quite a bit of work towards the current result. Although, some group members initially focused more heavily on the prototype or helping with the paper.
 
 Our prototype now has the functionality we discussed with implementing when we met with Professor Ortega to increase the complexity and decrease the simplicity of the prototype. This includes data collection and output to a file, connection with the controller that allows users to input commands and has the haptic feedback. We also have sound implemented. The user is guided through 1 of 4 possible configurations. This includes, no external stimuli, sound, haptic, haptics and sound. These can happen in different orders. The start of the game is marked by a start button, three rounds are played of one of the possible configurations, and then after those rounds finish a next round button appears to take the user to a different configuration.
+
+
+## Final 
+
+Youtube Code Walkthrough: https://youtu.be/-4bseAj-txI 
+
