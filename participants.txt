@@ -1,0 +1,27 @@
+Participants:
+Emily Grove
+Casey Stump
+Andrew Beckman
+Daisy Aceves
+Hadi Alizadeh
+Audrey Dorin
+Sherri Garrett
+Tay Monteau
+Brooke Bennett
+Sarah Walz
+Hannah Matthews
+Claire Cortesy *
+Dylan Nierman *
+Ben Saathoff *
+Dylan Armstrong *
+Tyson O'Leary
+Jordan Rust *
+Tanmay Naidu *
+Ethan Holen
+Sam McKay *
+Caspian Siebert
+Ashlyn Lee
+Scott Chase *
+Irene Zaugg *
+
+*Students who performed our experiment in CS464:
